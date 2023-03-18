@@ -1,6 +1,3 @@
-# python3
-
-
 def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
