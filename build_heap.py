@@ -33,13 +33,11 @@ def main():
         n = int(input("Enter size of array..."))
         data = list(map(int, input("Enter elements of array...").split()))
 
-    elif "F" in text:
-         file_name = input("Enter file name: ")
+    if "F" in text:
+        file_name = input("Enter file name...")
         if "a" not in file_name:
-            path = './tests/' + file_name
-            with open(path, 'r', encoding='utf-8') as file:
-            n = int(f.readline().strip())
-            data = list(map(int, f.readline().strip().split()))
+            with open(file_name, "r") as f:
+                data = list(map(int, f.readline().split()))
 
     swaps = build_heap(data)
 
