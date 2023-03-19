@@ -1,8 +1,8 @@
 def build_heap(data):
     swaps = []
-    n = len(data)
+    size = len(data)
 
-    def shift_down(i):
+    def change(i):
         min_index = i
         left = 2 * i + 1
         right = 2 * i + 2
@@ -17,8 +17,11 @@ def build_heap(data):
             data[i], data[min_index] = data[min_index], data[i]
             swaps.append((i, min_index))
             shift_down(min_index)
+            
+    def shift_down(i):
+        change(i)
 
-    for i in range(n // 2, -1, -1):
+    for i in range(size // 2, -1, -1):
         shift_down(i)
 
     return swaps
