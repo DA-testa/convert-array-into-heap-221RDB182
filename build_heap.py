@@ -14,9 +14,8 @@ def build_heap(data):
             min_index = right
 
         if i != min_index:
-            swaps.append((i, min_index))
-            
             data[i], data[min_index] = data[min_index], data[i]
+            swaps.append((i, min_index))
             shift_down(min_index)
 
     for i in range(n // 2, -1, -1):
@@ -26,24 +25,26 @@ def build_heap(data):
 
 
 def main():
-    data = []
-    text = input("Enter I for input, F for file...")
+  source = input("Enter I for input, F for file...")
 
-    if "I" in text:
-        n = int(input("Enter size of array..."))
+    if source == "I":
+        size = int(input("Enter size of array..."))
         data = list(map(int, input("Enter elements of array...").split()))
-
-    if "F" in text:
+    elif source == "F":
         file_name = input("Enter file name...")
         if "a" not in file_name:
             with open(file_name, "r") as f:
+                size = int(f.readline())
                 data = list(map(int, f.readline().split()))
+        else:
+            size = int(file_name[1:])
+            data = list(range(1, size + 1))
+            data.reverse()
 
     swaps = build_heap(data)
-
-    print("Array is converted into a heap in", len(swaps), "swaps")
-    for i, j in swaps:
-        print(i, j)
+    print(len(swaps))
+    for swap in swaps:
+        print(swap[0], swap[1])
 
 if __name__ == "__main__":
     main()
