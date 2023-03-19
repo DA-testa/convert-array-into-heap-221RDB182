@@ -28,21 +28,27 @@ def build_heap(data):
 
 
 def main():
-  source = input("Enter I for input, F for file...")
+   text = input("Enter 'I' for input or 'F' for file")
+    if "F" in text:
+        file_name = input("Enter file name: ")
+        if "a" not in file_name:
+            path = './tests/' + file_name
+            with open(path, 'r', encoding='utf-8') as file:
+                size = int(file.readline())
+                data = list(map(int, file.readline().split()))
+    elif "I" in text:
+        size = int(input())
+        data = list(map(int, input().split()))
 
-    if source == 'I':
-        n = int(input("Enter size of array..."))
-        arr = list(map(int, input("Enter elements of array...").split()))
-    elif source == 'F':
-        file_name = input("Enter file name...")
-        with open(file_name, "r") as f:
-            n = int(f.readline())
-            arr = list(map(int, f.readline().split()))
+    assert data is not None and len(data) == n
 
     swaps = build_heap(data)
+
+    assert len(swaps) <= n*4
+
     print(len(swaps))
-    for swap in swaps:
-        print(swap[0], swap[1])
+    for i, j in swaps:
+        print(i, j)
 
 if __name__ == "__main__":
     main()
