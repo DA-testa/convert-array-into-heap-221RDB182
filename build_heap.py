@@ -30,10 +30,10 @@ def build_heap(data):
 def main():
   source = input("Enter I for input, F for file...")
 
-    if source == "I":
+    if source == 'I':
         n = int(input("Enter size of array..."))
         arr = list(map(int, input("Enter elements of array...").split()))
-    elif source == "F":
+    elif source == 'F':
         file_name = input("Enter file name...")
         with open(file_name, "r") as f:
             n = int(f.readline())
