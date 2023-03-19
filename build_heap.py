@@ -26,7 +26,7 @@ def build_heap(data):
 
 def main():
     # input from keyboard
-    text = input("Enter I for input, F for file...")
+    text = input("Enter 'I' for input, 'F' for file...")
     
    if "F" in text:
         file_name = input("Enter file name: ")
