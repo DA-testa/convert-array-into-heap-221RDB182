@@ -2,7 +2,7 @@ def build_heap(data):
     swaps = []
     n = len(data)
 
-    def change(i):
+    def shift_down(i):
         min_index = i
         left = 2 * i + 1
         right = 2 * i + 2
@@ -20,7 +20,7 @@ def build_heap(data):
             shift_down(min_index)
 
     for i in range(n // 2, -1, -1):
-        change(i)
+        shift_down(i)
 
     return swaps
 
@@ -34,7 +34,10 @@ def main():
         data = list(map(int, input("Enter elements of array...").split()))
 
     elif "F" in text:
-        with open("input.txt", "r") as f:
+         file_name = input("Enter file name: ")
+        if "a" not in file_name:
+            path = './tests/' + file_name
+            with open(path, 'r', encoding='utf-8') as file:
             n = int(f.readline().strip())
             data = list(map(int, f.readline().strip().split()))
 
