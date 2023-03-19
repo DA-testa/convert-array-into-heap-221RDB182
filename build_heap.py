@@ -7,10 +7,10 @@ def build_heap(data):
         left = 2 * i + 1
         right = 2 * i + 2
 
-        if left < n and data[left] < data[min_index]:
+        if left < size and data[left] < data[min_index]:
             min_index = left
 
-        if right < n and data[right] < data[min_index]:
+        if right < size and data[right] < data[min_index]:
             min_index = right
 
         if i != min_index:
