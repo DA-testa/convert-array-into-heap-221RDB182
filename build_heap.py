@@ -1,9 +1,8 @@
 def build_heap(data):
     swaps = []
     n = len(data)
-    
+
     def change(i):
-        nonlocal swaps
         min_index = i
         left = 2 * i + 1
         right = 2 * i + 2
@@ -27,25 +26,23 @@ def build_heap(data):
 
 
 def main():
-        text = input("Enter I for input, F for file.")
+    data = []
+    text = input("Enter I for input, F for file...")
 
-        if "I" in text:
-            n = int(input("Enter size of array..."))
-            data = list(map(int, input("Enter elements of array.").split()))
-            break
+    if "I" in text:
+        n = int(input("Enter size of array..."))
+        data = list(map(int, input("Enter elements of array...").split()))
 
-        if "F" in text:
-            file_name = input("Enter file name...")
-            with open(file_name, "r") as f:
-                n = int(f.readline())
-                data = list(map(int, f.readline().split()))
-            break
+    elif "F" in text:
+        with open("input.txt", "r") as f:
+            n = int(f.readline().strip())
+            data = list(map(int, f.readline().strip().split()))
 
     swaps = build_heap(data)
-    
-    print(len(swaps))
-    for swap in swaps:
-        print(swap[0], swap[1])
+
+    print("Array is converted into a heap in", len(swaps), "swaps")
+    for i, j in swaps:
+        print(i, j)
 
 if __name__ == "__main__":
     main()
