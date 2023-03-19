@@ -1,10 +1,3 @@
-def build_heap(data):
-    swaps = []
-    n = len(data)
-
-    for i in range(n // 2, -1, -1):
-        shift_down(i)
-
     def shift_down(i):
         nonlocal swaps
         min_index = i
@@ -21,6 +14,13 @@ def build_heap(data):
             swaps.append((i, min_index))
             data[i], data[min_index] = data[min_index], data[i]
             shift_down(min_index)
+            
+    def build_heap(data):
+    swaps = []
+    n = len(data)
+
+    for i in range(n // 2, -1, -1):
+        shift_down(i)
 
     return swaps
 
