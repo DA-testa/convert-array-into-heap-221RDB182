@@ -35,11 +35,7 @@ def main():
             with open(path, 'r', encoding='utf-8') as file:
                 n = int(file.readline())
                 data = list(map(int, file.readline().split()))
-                
-        elif "I" in text:
-        n = int(input("Enter size of array..."))
-        data = list(map(int, input("Enter elements of array...").split()))
- 
+          
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
 
