@@ -31,18 +31,13 @@ def main():
   source = input("Enter I for input, F for file...")
 
     if source == "I":
-        size = int(input("Enter size of array..."))
-        data = list(map(int, input("Enter elements of array...").split()))
+        n = int(input("Enter size of array..."))
+        arr = list(map(int, input("Enter elements of array...").split()))
     elif source == "F":
         file_name = input("Enter file name...")
-        if "a" not in file_name:
-            with open(file_name, "r") as f:
-                size = int(f.readline())
-                data = list(map(int, f.readline().split()))
-        else:
-            size = int(file_name[1:])
-            data = list(range(1, size + 1))
-            data.reverse()
+        with open(file_name, "r") as f:
+            n = int(f.readline())
+            arr = list(map(int, f.readline().split()))
 
     swaps = build_heap(data)
     print(len(swaps))
