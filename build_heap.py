@@ -27,6 +27,7 @@ def build_heap(data):
 def main():
     # input from keyboard
     text = input("Enter I for input, F for file...")
+    
     if "F" in text:
         file_name = input("Enter file name: ")
         if "a" not in file_name:
@@ -34,11 +35,10 @@ def main():
             with open(path, 'r', encoding='utf-8') as file:
                 n = int(file.readline())
                 data = list(map(int, file.readline().split()))
+                
         elif "I" in text:
         n = int(input("Enter size of array..."))
         data = list(map(int, input("Enter elements of array...").split()))
-    else:
-        print("Error. Please enter 'I' or 'F'.")
  
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
