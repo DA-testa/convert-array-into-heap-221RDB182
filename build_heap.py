@@ -1,4 +1,8 @@
-    def shift_down(i):
+def build_heap(data):
+    swaps = []
+    n = len(data)
+    
+    def change(i):
         nonlocal swaps
         min_index = i
         left = 2 * i + 1
@@ -12,25 +16,22 @@
 
         if i != min_index:
             swaps.append((i, min_index))
+            
             data[i], data[min_index] = data[min_index], data[i]
             shift_down(min_index)
-            
-    def build_heap(data):
-    swaps = []
-    n = len(data)
 
     for i in range(n // 2, -1, -1):
-        shift_down(i)
+        change(i)
 
     return swaps
 
+
 def main():
-    while True:
-        text = input("Enter I for input, F for file...")
+        text = input("Enter I for input, F for file.")
 
         if "I" in text:
             n = int(input("Enter size of array..."))
-            data = list(map(int, input("Enter elements of array...").split()))
+            data = list(map(int, input("Enter elements of array.").split()))
             break
 
         if "F" in text:
@@ -41,6 +42,7 @@ def main():
             break
 
     swaps = build_heap(data)
+    
     print(len(swaps))
     for swap in swaps:
         print(swap[0], swap[1])
